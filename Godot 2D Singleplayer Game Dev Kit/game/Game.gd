@@ -1,19 +1,19 @@
-# this script and correspond scene is where all the actual gameplay takes place
-# ScreenManager transitions the user in and out of this scene when game starts/ends
 extends Node2D
 
+############################## SIGNALS ##############################
 
-signal game_failed
-signal game_won
+signal game_failed(screen_name, data)
+signal game_won(screen_name, data)
 
+############################## VARIABLES ##############################
 
 # stores whether game has ended
 var has_game_ended := false
 
+############################## METHODS ##############################
 
-# YOU MUST MANUALLY CALL THIS METHOD to end the game
-# you will most likely use a signal from the death of the player object to call this
-func fail_game():
+# this must be manually called by child class or via signal
+func fail_game(data:={}):
 	# prevent game session from being ended twice
 	if has_game_ended:
 		return
@@ -22,12 +22,11 @@ func fail_game():
 	has_game_ended = true
 	
 	# notify parent node that game has been lost
-	emit_signal("game_failed")
+	emit_signal("game_failed", "fail", data)
 
 
-# YOU MUST MANUALLY CALL THIS METHOD to end the game
-# you will most likely use a signal from an object like win flag or clock to do this
-func win_game():
+# this must be manually called by child class or via signal
+func win_game(data:={}):
 	# prevent game session from being ended twice
 	if has_game_ended:
 		return
@@ -36,6 +35,16 @@ func win_game():
 	has_game_ended = true
 	
 	# notify parent node that game has been won
-	emit_signal("game_won")
+	emit_signal("game_won", "win", data)
 
+############################## DEBUG ##############################
+
+func _input(_event:InputEvent):
+	if OS.is_debug_build():
+		if Input.is_action_just_pressed("debug_fail"):
+			fail_game()
+		elif Input.is_action_just_pressed("debug_win"):
+			win_game()
+
+############################## END ##############################
 

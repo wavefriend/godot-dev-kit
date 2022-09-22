@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/pixel_operator_64.tres" type="DynamicFont" id=1]
+[ext_resource path="res://screens/base/Screen.gd" type="Script" id=2]
+[ext_resource path="res://assets/themes/pixel_art_theme.tres" type="Theme" id=3]
+
+[node name="StartScreen" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer"]
+margin_left = 366.0
+margin_top = 220.0
+margin_right = 658.0
+margin_bottom = 356.0
+alignment = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+margin_right = 292.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 1 )
+text = "Game Title"
+align = 1
+
+[node name="Continue" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 292.0
+margin_bottom = 100.0
+text = "press SPACE to start"
+align = 1
+
+[node name="Alternate" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 292.0
+margin_bottom = 136.0
+text = "press SHIFT for credits"
+align = 1

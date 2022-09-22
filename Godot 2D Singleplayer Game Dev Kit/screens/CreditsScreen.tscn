@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/pixel_operator_64.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/themes/pixel_art_theme.tres" type="Theme" id=2]
+[ext_resource path="res://screens/base/Screen.gd" type="Script" id=3]
+
+[node name="CreditsScreen" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer"]
+margin_left = 285.0
+margin_top = 184.0
+margin_right = 739.0
+margin_bottom = 392.0
+alignment = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+margin_right = 454.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 1 )
+text = "Credits"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 454.0
+margin_bottom = 172.0
+custom_constants/separation = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 156.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 156.0
+margin_bottom = 32.0
+text = "wavedotdev"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 156.0
+margin_bottom = 68.0
+text = "opengameart"
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 156.0
+margin_bottom = 104.0
+text = "free sfx"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 284.0
+margin_right = 454.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 170.0
+margin_bottom = 32.0
+text = "everything"
+align = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 36.0
+margin_right = 170.0
+margin_bottom = 68.0
+text = "music"
+align = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 72.0
+margin_right = 170.0
+margin_bottom = 104.0
+text = "sound effects"
+align = 2
+
+[node name="Continue" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+margin_top = 176.0
+margin_right = 454.0
+margin_bottom = 208.0
+text = "press SPACE to return"
+align = 1
