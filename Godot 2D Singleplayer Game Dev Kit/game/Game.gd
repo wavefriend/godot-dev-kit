@@ -5,6 +5,11 @@ extends Node2D
 signal game_failed(screen_name, data)
 signal game_won(screen_name, data)
 
+############################## CONSTANTS ##############################
+
+const FAIL_DELAY_TIME := 2.0
+const WIN_DELAY_TIME := 2.0
+
 ############################## VARIABLES ##############################
 
 # stores whether game has ended
@@ -21,6 +26,9 @@ func fail_game(data:={}):
 	# remember that game has ended
 	has_game_ended = true
 	
+	# yield an amount of time
+	yield(get_tree().create_timer(FAIL_DELAY_TIME), "timeout")
+	
 	# notify parent node that game has been lost
 	emit_signal("game_failed", "fail", data)
 
@@ -33,6 +41,9 @@ func win_game(data:={}):
 	
 	# remember that game has ended
 	has_game_ended = true
+	
+	# yield an amount of time
+	yield(get_tree().create_timer(WIN_DELAY_TIME), "timeout")
 	
 	# notify parent node that game has been won
 	emit_signal("game_won", "win", data)

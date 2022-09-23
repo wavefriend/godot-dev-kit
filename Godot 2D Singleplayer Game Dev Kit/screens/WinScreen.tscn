@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/fonts/pixel_operator_64.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/themes/pixel_art_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/themes/menu_theme.tres" type="Theme" id=2]
 [ext_resource path="res://screens/base/Screen.gd" type="Script" id=3]
 
 [node name="WinScreen" type="Node2D"]
@@ -26,21 +25,20 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer"]
 margin_left = 354.0
-margin_top = 238.0
+margin_top = 254.0
 margin_right = 670.0
-margin_bottom = 338.0
+margin_bottom = 322.0
 alignment = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
 margin_right = 316.0
-margin_bottom = 64.0
-custom_fonts/font = ExtResource( 1 )
+margin_bottom = 32.0
 text = "Success!"
 align = 1
 
 [node name="Continue" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
-margin_top = 68.0
+margin_top = 36.0
 margin_right = 316.0
-margin_bottom = 100.0
+margin_bottom = 68.0
 text = "press SPACE to play again"
 align = 1
