@@ -33,7 +33,7 @@ window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/debug/plugin.cfg", "res://addons/many_effects/plugin.cfg", "res://addons/queue_label_box/plugin.cfg", "res://addons/settings/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/debug/plugin.cfg", "res://addons/many_effects/plugin.cfg" )
 
 [importer_defaults]
 
