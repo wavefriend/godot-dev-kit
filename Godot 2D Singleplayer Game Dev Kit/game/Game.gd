@@ -7,8 +7,14 @@ signal game_won(screen_name, data)
 
 ############################## CONSTANTS ##############################
 
-const FAIL_DELAY_TIME := 2.0
-const WIN_DELAY_TIME := 2.0
+const FAIL_DELAY_TIME := 0.5 # should be greater than fail sound duration
+const WIN_DELAY_TIME := 0.5 # should greater than win sound duration
+
+############################## ONREADYS ##############################
+
+onready var background_music := $Music/BackgroundMusic
+onready var fail_sound := $Sfx/FailSound
+onready var win_sound := $Sfx/WinSound
 
 ############################## VARIABLES ##############################
 
@@ -26,6 +32,9 @@ func fail_game(data:={}):
 	# remember that game has ended
 	has_game_ended = true
 	
+	# play fail sound
+	fail_sound.play()
+	
 	# yield an amount of time
 	yield(get_tree().create_timer(FAIL_DELAY_TIME), "timeout")
 	
@@ -38,6 +47,9 @@ func win_game(data:={}):
 	# prevent game session from being ended twice
 	if has_game_ended:
 		return
+	
+	# play win sound
+	win_sound.play()
 	
 	# remember that game has ended
 	has_game_ended = true

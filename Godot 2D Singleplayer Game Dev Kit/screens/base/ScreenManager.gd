@@ -12,6 +12,12 @@ const SCREEN_SCENES := {
 	"win":preload("res://screens/WinScreen.tscn")
 }
 
+############################## ONREADYS ##############################
+
+onready var intro_music := $Music/IntroMusic
+onready var fail_music := $Music/FailMusic
+onready var win_music := $Music/WinMusic
+
 ############################## VARIABLES ##############################
 
 # stores string name of scene
@@ -78,6 +84,9 @@ func set_current_screen(screen_name:String, data:={}):
 	
 	# call after screen node added to tree
 	current_screen_node.call_deferred("init", data)
+	
+	# update music
+	_update_music(screen_name)
 
 
 # frees current screen from memory if there is one
@@ -88,5 +97,29 @@ func free_current_screen():
 	current_screen_name = ""
 	current_screen_scene = null
 	current_screen_node = null
+
+############################## MUSIC ##############################
+
+func _update_music(screen_name:String):
+	match(screen_name):
+		"start":
+			fail_music.stop()
+			win_music.stop()
+			if not intro_music.is_playing():
+				intro_music.play()
+		"game":
+			intro_music.stop()
+			fail_music.stop()
+			win_music.stop()
+		"fail":
+			intro_music.stop()
+			win_music.stop()
+			if not fail_music.is_playing():
+				fail_music.play()
+		"win":
+			intro_music.stop()
+			fail_music.stop()
+			if not win_music.is_playing():
+				win_music.play()
 
 ############################## END ##############################
